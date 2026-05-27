@@ -469,6 +469,24 @@ h2 {
   font-size: 0.94rem;
 }
 
+.appointment {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.calendly-shell {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 14px 38px rgba(20, 20, 22, 0.07);
+}
+
+.calendly-inline-widget {
+  min-width: 320px;
+  height: 760px;
+}
+
 .contact {
   padding-bottom: 70px;
 }
