@@ -1,4 +1,41 @@
 const contactForm = document.querySelector("#contact-form");
+const mobileAnchorQuery = window.matchMedia("(max-width: 880px)");
+
+const scrollToMobileHashTarget = () => {
+  if (!mobileAnchorQuery.matches || !window.location.hash) {
+    return;
+  }
+
+  const targetId = decodeURIComponent(window.location.hash.slice(1));
+  const target = document.getElementById(targetId);
+
+  if (target) {
+    const header = document.querySelector(".site-header");
+    const headerOffset = header ? header.offsetHeight + 10 : 0;
+
+    window.scrollTo({
+      top: Math.max(target.offsetTop - headerOffset, 0),
+      left: 0,
+      behavior: "auto"
+    });
+  }
+};
+
+const queueMobileHashScroll = () => {
+  [100, 600, 1200].forEach((delay) => {
+    window.setTimeout(scrollToMobileHashTarget, delay);
+  });
+};
+
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(() => {
+    queueMobileHashScroll();
+  });
+});
+
+window.addEventListener("hashchange", () => {
+  queueMobileHashScroll();
+});
 
 if (contactForm) {
   const submitButton = contactForm.querySelector('button[type="submit"]');

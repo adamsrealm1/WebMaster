@@ -633,17 +633,42 @@ textarea:focus {
 }
 
 @media (max-width: 880px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    scroll-margin-top: 128px;
+  }
+
   .nav {
     min-height: auto;
     padding: 14px 0;
     flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .brand,
+  .cta-small {
+    flex: 0 0 auto;
   }
 
   .nav-links {
     order: 3;
+    min-width: 0;
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 2px;
+    padding-bottom: 4px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
   }
 
   .hero {
@@ -679,15 +704,72 @@ textarea:focus {
   .service-photo img {
     aspect-ratio: 16 / 10;
   }
+
+  .section-head {
+    align-items: start;
+    gap: 18px;
+  }
+
+  .contact-list span:last-child,
+  .footer-inner span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .calendly-inline-widget {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 @media (max-width: 560px) {
+  .nav,
+  .hero-inner,
+  .section-inner,
+  .footer-inner {
+    width: min(1160px, calc(100% - 24px));
+  }
+
+  .nav {
+    padding: 12px 0;
+  }
+
+  .brand {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .nav-links a {
+    min-height: 40px;
+    padding: 9px 8px;
+    display: grid;
+    place-items: center;
+    background: #eef3f3;
+    color: #2e343b;
+    font-size: 0.88rem;
+    text-align: center;
+  }
+
   .cta-small {
     display: none;
   }
 
   section {
-    padding: 66px 0;
+    padding: 58px 0;
+    scroll-margin-top: 214px;
   }
 
   .hero::before {
@@ -696,9 +778,88 @@ textarea:focus {
       url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80") center / cover;
   }
 
+  .hero-inner {
+    padding: 50px 0 48px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+  }
+
+  h1 {
+    margin-bottom: 16px;
+    font-size: 2.95rem;
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  span,
+  label {
+    overflow-wrap: break-word;
+  }
+
+  .hero-copy {
+    margin-bottom: 22px;
+    font-size: 1rem;
+  }
+
   .hero-actions,
   .button {
     width: 100%;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .metrics {
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .metric {
+    min-height: auto;
+    padding: 16px 18px;
+  }
+
+  .metric strong {
+    font-size: 1.55rem;
+  }
+
+  .section-head {
+    margin-bottom: 24px;
+  }
+
+  .section-head p,
+  .lead {
+    font-size: 0.98rem;
+  }
+
+  .portfolio-grid,
+  .service-list,
+  .process-grid,
+  .contact-shell,
+  .form-grid {
+    gap: 14px;
+  }
+
+  .project-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-body {
+    padding: 18px;
   }
 
   .form-grid,
@@ -706,12 +867,103 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .service-layout {
+    gap: 20px;
+  }
+
+  .service-item {
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .process-step {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .process-step span {
+    margin-bottom: 18px;
+  }
+
+  .appointment .section-inner {
+    width: 100%;
+  }
+
+  .appointment .section-head {
+    width: min(1160px, calc(100% - 24px));
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .calendly-shell {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .calendly-inline-widget {
+    height: 700px;
+  }
+
   .contact-form,
   .contact-panel {
     padding: 22px;
   }
 
+  .contact-list a,
+  .contact-list div {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .contact-list span:first-child {
+    width: 38px;
+    height: 38px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 1rem;
+  }
+
   .footer-inner {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav,
+  .hero-inner,
+  .section-inner,
+  .footer-inner,
+  .appointment .section-head {
+    width: min(1160px, calc(100% - 20px));
+  }
+
+  .nav-links a {
+    min-height: 38px;
+    font-size: 0.82rem;
+  }
+
+  h1 {
+    font-size: 2.55rem;
+  }
+
+  h2 {
+    font-size: 1.82rem;
+  }
+
+  .contact-form,
+  .contact-panel,
+  .process-step,
+  .service-item,
+  .project-body {
+    padding: 18px;
   }
 }
